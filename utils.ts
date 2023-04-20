@@ -9,12 +9,12 @@ dotenv.config();
  * const readmeContent = await getRepoReadmeData("15PuzzleGame");
  * console.log(readmeContent);
  */
-export const getRepoReadmeData = async (repoName) => {
+export const getRepoReadmeData = async (repoName: string) => {
   try {
     const response = await fetch(
       `https://api.github.com/repos/${process.env.GH_USERNAME}/${repoName}/contents/README.md`
     );
-    const repoData = await response.json();
+    const repoData: any = await response.json();
     const readmeDataUrl = repoData.download_url;
 
     const readmeResponse = await fetch(readmeDataUrl);
@@ -36,9 +36,9 @@ export const getAllUserRepos = async () => {
     const response = await fetch(
       `https://api.github.com/users/${process.env.GH_USERNAME}/repos`
     );
-    const data = await response.json();
+    const data: any = await response.json();
 
-    return data.map((repo) => ({
+    return data.map((repo: any) => ({
       name: repo.name,
       url: repo.url,
     }));
