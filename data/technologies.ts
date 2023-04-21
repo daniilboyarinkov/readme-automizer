@@ -164,11 +164,13 @@ export const restTechnologies: ITechnology[] = [
   VITE,
 ];
 
-// <a href={url}>
-//   <img
-//     src={img}
-//     width="40"
-//     height="40"
-//     alt={label}
-//   />
-// </a>;
+export const renderTechnology = (technology: ITechnology) => `
+<a href="${technology.url}">
+  <img
+    src="${technology.img}"
+    alt="${technology.label}"
+    width="40"
+    height="40"
+  />
+</a>
+`;

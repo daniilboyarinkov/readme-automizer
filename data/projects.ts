@@ -12,7 +12,8 @@ import {
   VITE,
   VSCODE,
   YARN,
-} from "./technologies";
+  renderTechnology,
+} from "./technologies.ts";
 
 export interface IProject {
   label?: string;
@@ -69,20 +70,16 @@ export const FIFTEEN: IProject = {
 
 export const projects: IProject[] = [CC, DS, CS, GD, FIFTEEN];
 
-const projectSeparator = `
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-`;
+export const renderProject = (project: IProject) => `
+<h3> ${project.label} </h3>
 
-// <h3> label </h3>
-// {description}
-// <a href={url} target="_blank">
-//   <img width="100%" alt="preview" src={previewImg}>
-// </a>
-// <details>
-//   <summary>Technologies</summary>
-//   <!-- {Technologies} -->
-// </details>
+${project.description}
+
+<a href="${project.url}" target="_blank">
+  <img width="100%" alt="preview" src="${project.previewImg}">
+</a>
+<details>
+  <summary>Technologies:</summary>
+  ${project.technologies?.map(renderTechnology).join("\n")}
+</details>
+`;

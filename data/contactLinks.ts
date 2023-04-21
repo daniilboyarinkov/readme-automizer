@@ -56,7 +56,9 @@ export const contactLinks: IContactLink[] = [
   TELEGRAM,
 ];
 
-// <!--    label    -->
-// <a href={url} target="_blank">
-//   <img src={img} alt={label} />
-// </a>
+export const renderLink = (link: IContactLink) => `
+<!--    ${link.label}    -->
+<a href="${link.url}" target="_blank">
+  <img src="${link.img}" alt="${link.label}" />
+</a>
+`;
